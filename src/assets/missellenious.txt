@@ -1,0 +1,283 @@
+//  getUsersList = async () => {
+//         try {
+//             const usersRequest = new CometChat.UsersRequestBuilder().setLimit(20).build();
+//             const users: User[] = (
+//                 await usersRequest.fetchNext()).map((user: CometChat.User) => ({
+//                     uid: user.getUid(),
+//                     name: user.getName(),
+//                     profile: user.getAvatar(),
+//                 } as User));
+//             this.setState({ usersList: users });
+//             console.log('Load Users:', users);
+//         } catch (error) {
+//             console.log('Load Users Error:', error);
+//         }
+//     }
+
+// chatUsersListView = () => {
+//    const { loggedInUser, usersList } = this.state
+//    return (
+//        <>
+//            <Box sx={styles.usersBox}>
+//                <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} p={2} color={'#fff'} bgcolor={'#6851d6'}>
+//                    <Stack direction={'row'} gap={1}>
+//                        <Typography variant='h6'>{loggedInUser.name}</Typography>
+//                        <Typography variant='h6'>Chats</Typography>
+//                    </Stack>
+//                    <IconButton sx={styles.logoutBtn} onClick={this.handleLogout}><Logout /></IconButton>
+//                </Stack>
+//                <Stack sx={styles.usersListBox} gap={2}>
+//                    {usersList && usersList.map((eachUser: User) => (
+//                        <Paper key={eachUser.uid} sx={styles.eachUserBox}
+//                            onClick={() => this.handleSelectUser(eachUser.uid)}
+//                        >
+//                            <Avatar src={eachUser.profile} />
+//                            <Box>
+//                                <Typography>{eachUser.name}</Typography>
+//                            </Box>
+//                        </Paper>
+//                    ))}
+//                </Stack>
+//                <IconButton onClick={this.handleAddUser} sx={styles.iconBtn}>
+//                    <AddCircle sx={styles.addIcon} />
+//                </IconButton>
+//            </Box>
+//        </>
+//    )
+// }
+
+// let conversations = conversationList.map(conversation => ({
+//     sender: conversation.getLastMessage().getSender().getName(),
+//     senderUid: conversation.getLastMessage().getSender().getUid(),
+//     senderProfile: conversation.getLastMessage().getSender().getAvatar(),
+//     receiver: conversation.getLastMessage().getReceiver().getName(),
+//     receiverUid: conversation.getLastMessage().getReceiver().getUid(),
+//     receiverProfile: conversation.getLastMessage().getReceiver().getAvatar(),
+//     text: conversation.getLastMessage().getText(),
+//     conversationWith: conversation.getConversationWith().getName(),
+//     conversationId: conversation.getConversationId(),
+//     unreadMessageCount: conversation.getUnreadMessageCount(),
+// }))
+// console.log('Conversations list fetched:', conversationList)
+
+
+
+// receiveOfflineMessages = async () => {
+//     const { selectedUser } = this.props
+
+//     let UID = selectedUser.uid
+//     let limit = 30;
+
+//     try {
+//         let latestId = await CometChat.getLastDeliveredMessageId();
+//         var messagesRequest = new CometChat.MessagesRequestBuilder()
+//             .setUID(UID)
+//             .setMessageId(latestId)
+//             .setLimit(limit)
+//             .build();
+//         const messages = messagesRequest.fetchNext()
+//     } catch (error) {
+//         alert('Somthing went wrong')
+//     }
+// }
+
+
+// receiver: {
+//     name: string;
+//     uid: string;
+//     avatar: string;
+//     status: string;
+//     lastAcitiveAt: number;
+// },
+// sender: {
+//     name: string;
+//     uid: string;
+//     avatar: string;
+//     status: string;
+// }
+// text: string;
+// sentAt: string
+
+
+
+// {
+//     category: string;
+//     conversationId: string;
+//     data: {
+//         entities: {
+//             receiver: {
+//                 entity: {
+//                     avatar: string;
+//                     conversationId: string;
+//                     name: string;
+//                     role: string;
+//                     status: string;
+//                     uid: string;
+//                 },
+//                 entityType: string
+//             },
+//             sender: {
+//                 entity: {
+//                     avatar: string;
+//                     lastActiveAt: string;
+//                     name: string;
+//                     role: string;
+//                     status: string;
+//                     uid: string;
+//                 },
+//                 entityType: string
+//             },
+//         },
+//         resource: string;
+//         text: string;
+//     },
+//     id: string;
+//     mentionedMe: string;
+//     mentionedUsers: [];
+//     rawMessage: {
+//         category: string;
+//         conversationId: string;
+//         data: {
+//             entities: {
+//                 receiver: {
+//                     entity: {
+//                         avatar: string
+//                         conversationId: string
+//                         name: string
+//                         role: string
+//                         status: string
+//                         uid: string
+//                     }
+//                     entityType: string
+//                 }
+//                 sender: {
+//                     entity: {
+//                         avatar: string
+//                         lastActiveAt: number
+//                         name: string
+//                         role: string
+//                         status: string
+//                         uid: string
+//                     }
+//                     entityType: string
+//                 }
+//             },
+//             resource: string;
+//             text: string;
+//         }
+//         id: string;
+//         mentionedMe: boolean;
+//         mentionedUsers: []
+//         reactions: []
+//         receiver: {
+//             avatar: string
+//             blockedByMe: boolean
+//             deactivatedAt: number
+//             hasBlockedMe: boolean
+//             name: string
+//             role: string
+//             status: string
+//             uid: string
+//         }
+//         receiverId: string
+//         receiverType: string
+//         sender: {
+//             avatar: string
+//             blockedByMe: boolean
+//             deactivatedAt: number
+//             hasBlockedMe: boolean
+//             lastActiveAt: number
+//             name: string
+//             role: string
+//             status: string
+//             uid: string
+//         }
+//         sentAt: number
+//         text: string
+//         type: string
+//         updatedAt: number
+//     }
+//     reactions: [];
+//     receiver: {
+//         avatar: string
+//         blockedByMe: boolean
+//         deactivatedAt: number
+//         hasBlockedMe: boolean
+//         name: string
+//         role: string
+//         status: string
+//         uid: string
+//     },
+//     receiverId: string
+//     receiverType: string
+//     sender: {
+//         avatar: string
+//         blockedByMe: boolean
+//         deactivatedAt: number
+//         hasBlockedMe: boolean
+//         lastActiveAt: number
+//         name: string
+//         role: string
+//         status: string
+//         uid: string
+//     }
+//     sentAt: number;
+//     text: string
+//     type: string
+//     updatedAt: number;
+// }
+
+// <Popover
+// open={message.text !== undefined && msgHoverOpen}
+// anchorEl={messageDelEl}
+// anchorOrigin={{
+//     vertical: 'bottom',
+//     horizontal: 'right',
+// }}
+// transformOrigin={{
+//     vertical: 'top',
+//     horizontal: 'right',
+// }}
+// onClose={this.handleMessageOffHover}
+// disableRestoreFocus
+// id="mouse-over-popover"
+// >
+// <IconButton onClick={this.handleDeleteMessage}>
+//     <Delete />
+// </IconButton>
+// </Popover>
+
+
+// handleDeleteMessage = () => {
+//     this.deleteMessage()
+// }
+
+// handleMessageHover = (event: React.MouseEvent<HTMLButtonElement>) => {
+//     this.setState({ messageDelEl: event.currentTarget });
+// }
+
+// handleMessageOffHover = () => {
+//     this.setState({ messageDelEl: null });
+// }
+
+{/* {eachUser.unreadMessageCount > 0 &&
+    <Box sx={styles.unreadBadge}>
+        <Box component='span'>{eachUser.unreadMessageCount}</Box>
+    </Box>
+    } */}
+
+    {/* :
+        <Box
+            sx={message.sender.name === loggedInUser.name ?
+                styles.senderMsg : styles.receiverMsg}
+        >
+            <Box sx={styles.senderDeletedMsgs}>
+                <DoNotDisturbAlt />
+                Message deleted
+                <Typography variant='subtitle2' mt={1} fontSize={10} textAlign={'right'} >
+                    {new Date(message.updatedAt * 1000).toLocaleString('en-US',
+                        { hour: 'numeric', minute: 'numeric', hour12: true })}
+                </Typography>
+            </Box>
+        </Box>
+    } */
